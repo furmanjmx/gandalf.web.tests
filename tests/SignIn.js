@@ -1,3 +1,5 @@
+"use strict";
+
 var protractor = require("protractor");
 
 describe('Gandalf', function () {
@@ -6,15 +8,12 @@ describe('Gandalf', function () {
         browser.get("http://gandalf.nebo15.com/service/#/sign-in");
     });
 
+    var home_page = require("../pages/home_page.js");
+
     it('SingIn test', function () {
 
-        var submit = element(by.buttonText('Submit'));
-
-        browser.isElementPresent(by.model('model.username'));
-        element(by.model('model.username')).sendKeys('furman');
-        element(by.model('model.password')).sendKeys('gt40vt14d');
-        submit.click();
-
-        browser.isElementPresent(by.className('btn btn-primary btn-icon'));
+        home_page.fillSignInForm('furman','gt40vt14d');
+        var dashboard_page = home_page.submitForm();
+        dashboard_page.assertDashboard();
     });
 });
