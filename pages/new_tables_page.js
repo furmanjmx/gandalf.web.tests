@@ -29,6 +29,14 @@ var new_tables_page = function () {
         var tableName = element(by.className('list-group-item-text ng-binding')).getText();
         expect(tableName).toBe(Name);
     };
+
+    this.deleteTable = function (data) {
+        element(by.className('btn btn-danger')).click();
+        element(by.model('model.code')).sendKeys(data);
+        element(by.className('btn btn-danger')).click();
+        browser.isElementPresent(by.className('list-group'));
+        return require("./table_page.js");
+    };
 };
 
 module.exports = new new_tables_page();
