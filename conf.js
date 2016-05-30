@@ -4,7 +4,7 @@ exports.config = {
     specs: ['tests/*.js'],
 
     capabilities: {
-        'browserName': 'chrome'
+        'browserName': 'firefox'
     },
 
     framework: 'jasmine2',
