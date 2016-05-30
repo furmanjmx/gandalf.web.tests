@@ -11,7 +11,7 @@ describe('Gandalf', function () {
 
     var home_page = require("../pages/home_page.js");
 
-    it('AddNewTable test', function () {
+    it('AddTable test', function () {
         var name = faker.name.findName();
         var password = faker.name.findName();
         var mail = faker.internet.email();
