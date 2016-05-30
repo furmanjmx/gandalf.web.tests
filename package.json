@@ -18,6 +18,7 @@
     "protractor": "3.2.1",
     "protractor-console": "2.0.0",
     "shelljs": "0.6.0",
-    "sleep": "3.0.1"
+    "sleep": "3.0.1",
+    "faker": "3.0.1"
   }
 }

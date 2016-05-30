@@ -17,9 +17,9 @@ describe('Gandalf', function () {
         dashboard_page.assertDashboard();
     });
 
-    xit('SingIn test bad login and pass', function () {
+    it('SingIn test bad login and pass', function () {
 
         home_page.fillSignInForm('trololo','ololol');
-        home_page.assertAlertMessage('Verify username and password and try again.');
+        home_page.assertAlertMessage();
     });
 });
