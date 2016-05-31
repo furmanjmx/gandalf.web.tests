@@ -51,10 +51,8 @@ describe('Gandalf', function () {
         new_project_page.createNewProject();
         var table_page = new_project_page.createProject('Project3', 'Description3');
         var new_tables_page = table_page.addTable();
-        var i = 0;
-        while (i < 2) {
+        for(var i = 0; i < 2; i++) {
             new_tables_page.createNewTable('Name', 'Description', 'Data', 'description', 'testDescription', 'random', 'randomData', 'olol', 'dfdfs');
-            i++;
         }
         new_tables_page.deleteRow('random');
     });
