@@ -1,6 +1,7 @@
 "use strict";
 
-require("./table_page.js");
+require("../pages/table_page.js");
+require("../pages/settings_page.js");
 
 var new_project_page = function () {
 
@@ -13,6 +14,12 @@ var new_project_page = function () {
         element(by.model('model.description')).sendKeys(describe);
         element(by.className('btn btn-primary')).click();
         return require("./table_page.js");
+    };
+
+    this.getSettings = function () {
+        browser.isElementPresent(by.css('[ui-sref="settings.project"]'));
+        element(by.css('[ui-sref="settings.project"]')).click();
+        return require("./settings_page.js");
     };
 };
 
