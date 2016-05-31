@@ -2,11 +2,12 @@
 
 var protractor = require("protractor");
 var faker = require('faker');
+var PageUrl = require('../caps');
 
 describe('Gandalf', function () {
 
-    beforeEach(function(){
-        browser.get("http://gandalf.nebo15.com/service/#/sign-in");
+    beforeEach(function () {
+        browser.get(PageUrl.url);
     });
 
     var home_page = require("../pages/home_page.js");
