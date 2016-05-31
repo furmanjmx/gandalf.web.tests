@@ -4,7 +4,7 @@ require("../pages/table_page.js");
 
 var new_tables_page = function () {
 
-    this.createNewTable = function (tableName, tableDesc, testData, testData2, testData3, rowData, rowData2, Fieldtitle, FieldKey) {
+    this.createNewTable = function (tableName, tableDesc, testData, testData2, testData3, rowData, rowData2, fieldtitle, fieldKey) {
         browser.isElementPresent(by.model('table.title'));
         element(by.model('table.title')).sendKeys(tableName);
         element(by.model('table.description')).sendKeys(tableDesc);
@@ -16,18 +16,18 @@ var new_tables_page = function () {
         element(by.model('table.defaultDescription')).sendKeys(rowData2);
         element(by.className('table-decision-column-add ng-isolate-scope')).click();
         browser.isElementPresent(by.model('field.title'));
-        element(by.model('field.title')).sendKeys(Fieldtitle);
-        element(by.model('field.key')).sendKeys(FieldKey);
+        element(by.model('field.title')).sendKeys(fieldtitle);
+        element(by.model('field.key')).sendKeys(fieldKey);
         element(by.className('btn btn-primary')).click();
         element(by.className('btn btn-success btn-loading')).click();
         return require("./table_page.js");
     };
 
-    this.assertNewTable = function (Name) {
+    this.assertNewTable = function (name) {
         element(by.className('logo')).click();
         browser.isElementPresent(by.className('list-group-item-text ng-binding'));
         var tableName = element(by.className('list-group-item-text ng-binding')).getText();
-        expect(tableName).toBe(Name);
+        expect(tableName).toBe(name);
     };
 
     this.deleteTable = function (data) {

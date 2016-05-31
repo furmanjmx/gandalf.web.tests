@@ -49,7 +49,7 @@ describe('Gandalf', function () {
         var welcome_page = home_page.welcomePage();
         var new_project_page = welcome_page.clickContinue();
         new_project_page.createNewProject();
-        var table_page = new_project_page.createProject('Project2', 'Description2');
+        var table_page = new_project_page.createProject('Project3', 'Description3');
         var new_tables_page = table_page.addTable();
         var i = 0;
         while (i < 2) {
