@@ -12,11 +12,7 @@ describe('Gandalf', function () {
     var home_page = require("../pages/home_page.js");
 
     it('SingUp test', function () {
-        var name = faker.name.findName();
-        var password = faker.name.findName();
-        var mail = faker.internet.email();
-
-        home_page.fillSignUpForm(name, password, mail);
+        home_page.fillSignUpForm(faker.name.findName(), faker.name.findName(), faker.internet.email());
         var welcome_page = home_page.welcomePage();
         var new_project_page = welcome_page.clickContinue();
         new_project_page.createNewProject();

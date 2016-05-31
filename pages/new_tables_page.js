@@ -37,6 +37,25 @@ var new_tables_page = function () {
         browser.isElementPresent(by.className('list-group'));
         return require("./table_page.js");
     };
+
+    this.editTable = function (title, description, text) {
+        element(by.className('glyphicon glyphicon-pencil')).click();
+        element(by.model('rule.title')).sendKeys(title);
+        element(by.model('rule.description')).sendKeys(description);
+        element(by.className('glyphicon glyphicon-ok')).click();
+        browser.isElementPresent(by.linkText('This table have unsaved data. You need to save changes manually.'));
+        element(by.className('btn btn-success btn-loading')).click();
+        var editTable = element(by.xpath('/html/body/div/ui-view/ui-view/div/ui-view/ui-view/form/div[2]/decision-table/div[1]/div[1]/table[1]/tbody/tr/td[2]/div/b')).getText();
+        expect(editTable).toBe(text);
+    };
+
+    this.deleteRow = function (text) {
+        element(by.className('glyphicon glyphicon-remove')).click();
+        browser.isElementPresent(by.linkText('This table have unsaved data. You need to save changes manually.'));
+        element(by.className('btn btn-success btn-loading')).click();
+        var editTable = element(by.xpath('/html/body/div/ui-view/ui-view/div/ui-view/ui-view/form/div[2]/decision-table/div[1]/div[1]/table[1]/tbody/tr/td[2]/div/b')).getText();
+        expect(editTable).toBe(text);
+    };
 };
 
 module.exports = new new_tables_page();
