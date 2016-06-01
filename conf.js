@@ -1,10 +1,12 @@
-// An example configuration file.
+
 exports.config = {
 
     specs: ['tests/*.js'],
 
     capabilities: {
-        'browserName': 'firefox'
+        'shardTestFiles': true,
+        'maxInstances': 1,
+        'browserName': 'phantomjs'
     },
 
     framework: 'jasmine2',

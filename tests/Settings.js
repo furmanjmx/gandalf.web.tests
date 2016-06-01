@@ -2,12 +2,13 @@
 
 var protractor = require("protractor");
 var faker = require('faker');
-var PageUrl = require('../caps').url;
+var url = require('../caps').url;
 
 describe('Gandalf', function () {
 
     beforeEach(function () {
-        browser.get(PageUrl);
+        browser.driver.manage().window().setSize(1280, 1024);
+        browser.get(url);
     });
 
     var home_page = require("../pages/home_page.js");
