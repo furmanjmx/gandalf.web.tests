@@ -9,7 +9,7 @@ var settings_page = function () {
         element(by.model('checked')).click();
         element(by.className('btn btn-primary')).click();
         element(by.className('btn btn-warning')).click();
-        var consumer = element(by.xpath('/html/body/div/ui-view/ui-view/div/ui-view/ui-view/div/div[3]/div[2]/div/div[2]/div/a[1]')).getText();
+        var consumer = element(by.xpath('/html/body/div/ui-view/ui-view/div/ui-view/ui-view/div[2]/div[2]/div[2]/div/div[2]/div/a[1]')).getText();
         expect(consumer).toBe(description);
     };
 };

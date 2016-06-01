@@ -17,8 +17,8 @@ var new_project_page = function () {
     };
 
     this.getSettings = function () {
-        browser.isElementPresent(by.css('[ui-sref="settings.project"]'));
-        element(by.css('[ui-sref="settings.project"]')).click();
+        browser.isElementPresent(by.css('[ui-sref="settings"]'));
+        element(by.css('[ui-sref="settings"]')).click();
         return require("./settings_page.js");
     };
 };
