@@ -25,6 +25,22 @@ var settings_page = function () {
         browser.ignoreSynchronization = true;
         browser.isElementPresent(by.buttonText('Submit'));
     };
+
+    this.editProject = function (text, desc) {
+        browser.isElementPresent(by.css('[project-edit="project"]'));
+        element(by.css('[project-edit="project"]')).click();
+        element(by.model('project.title')).clear();
+        element(by.model('project.title')).sendKeys(text);
+        element(by.model('project.description')).clear();
+        element(by.model('project.description')).sendKeys(desc);
+        element(by.buttonText('Save')).click();
+        var editProject = element(by.xpath('/html/body/div/ui-view/ui-view/div/ui-view/ui-view/div[1]/div/div/div/div[1]')).getText();
+        var editDesc = element(by.xpath('/html/body/div/ui-view/ui-view/div/ui-view/ui-view/div[1]/div/div/div/div[2]')).getText();
+        browser.sleep(500);
+        browser.ignoreSynchronization = true;
+        expect(editProject).toContain(text);
+        expect(editDesc).toContain(desc);
+    };
 };
 
 module.exports = new settings_page();
