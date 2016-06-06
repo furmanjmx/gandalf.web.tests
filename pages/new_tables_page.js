@@ -1,6 +1,7 @@
 "use strict";
 
 require("../pages/table_page.js");
+require("../pages/revisions_page.js");
 
 var new_tables_page = function () {
 
@@ -54,6 +55,15 @@ var new_tables_page = function () {
         browser.isElementPresent(by.linkText('This table have unsaved data. You need to save changes manually.'));
         element(by.className('btn btn-success btn-loading')).click();
         var editTable = element(by.xpath('/html/body/div/ui-view/ui-view/div/ui-view/ui-view/ui-view/form/div[2]/decision-table/div[1]/div[1]/table[1]/tbody/tr[1]/td[2]/div/b')).getText();
+        expect(editTable).toBe(text);
+    };
+
+    this.getRevision = function () {
+        return require("./revisions_page.js");
+    };
+
+    this.assertRevision = function (text) {
+        var editTable = element(by.css('[ng-if="rule.title"]')).getText();
         expect(editTable).toBe(text);
     };
 };

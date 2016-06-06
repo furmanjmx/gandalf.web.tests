@@ -58,4 +58,26 @@ describe('Gandalf', function () {
         }
         new_tables_page.deleteRow('random');
     });
+
+    it('Revisions test', function () {
+        home_page.fillSignUpForm(faker.name.findName(), faker.name.findName(), faker.internet.email());
+        var welcome_page = home_page.welcomePage();
+        var new_project_page = welcome_page.clickContinue();
+        new_project_page.createNewProject();
+        var table_page = new_project_page.createProject('Project2', 'Description2');
+        var new_tables_page = table_page.addTable();
+        new_tables_page.createNewTable('Name', 'Description', 'Data', 'description', 'testDescription', 'random', 'randomData', 'olol', 'dfdfs');
+        new_tables_page.editTable('edit', 'page', 'randomedit');
+        var revisions_page = new_tables_page.getRevision();
+        revisions_page.revisionTable();
+        new_tables_page.assertRevision('random');
+    });
+
+    it('History test', function () {
+        home_page.fillSignInForm('furman', 'gt40vt14d');
+        var dashboard_page = home_page.submitForm();
+        dashboard_page.assertDashboard();
+        var history_page = dashboard_page.getHistory();
+        history_page.findTable('test1');
+    });
 });
