@@ -2,6 +2,7 @@
 
 require("../pages/table_page.js");
 require("../pages/revisions_page.js");
+require("../pages/debugger_page.js");
 
 var new_tables_page = function () {
 
@@ -60,6 +61,10 @@ var new_tables_page = function () {
 
     this.getRevision = function () {
         return require("./revisions_page.js");
+    };
+
+    this.getDebugger = function () {
+        return require("./debugger_page.js");
     };
 
     this.assertRevision = function (text) {
