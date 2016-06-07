@@ -6,7 +6,7 @@ require("../pages/debugger_page.js");
 
 var new_tables_page = function () {
 
-    this.createNewTable = function (tableName, tableDesc, testData, testData2, testData3, rowData, rowData2, fieldtitle, fieldKey) {
+    this.createNewTable = function (tableName, tableDesc, testData, testData2, testData3, rowData, rowData2, fieldTitle, fieldKey) {
         browser.isElementPresent(by.model('table.title'));
         element(by.model('table.title')).sendKeys(tableName);
         element(by.model('table.description')).sendKeys(tableDesc);
@@ -18,11 +18,38 @@ var new_tables_page = function () {
         element(by.model('table.defaultDescription')).sendKeys(rowData2);
         element(by.className('table-decision-column-add ng-isolate-scope')).click();
         browser.isElementPresent(by.model('field.title'));
-        element(by.model('field.title')).sendKeys(fieldtitle);
+        element(by.model('field.title')).sendKeys(fieldTitle);
         element(by.model('field.key')).sendKeys(fieldKey);
         element(by.className('btn btn-primary')).click();
         element(by.className('btn btn-success btn-loading')).click();
         return require("./table_page.js");
+    };
+
+    this.createNewTableWithoutColumn = function (data1, data2, data3, data4, data5, data6, data7) {
+        browser.isElementPresent(by.model('table.title'));
+        element(by.model('table.title')).sendKeys(data1);
+        element(by.model('table.description')).sendKeys(data2);
+        element(by.model('$parent.model')).sendKeys(data3);
+        element(by.model('table.defaultTitle')).sendKeys(data4);
+        element(by.model('table.defaultDescription')).sendKeys(data5);
+        element(by.className('plus')).click();
+        element(by.model('rule.title')).sendKeys(data6);
+        element(by.model('rule.description')).sendKeys(data7);
+        element(by.className('btn btn-success btn-loading')).click();
+
+    };
+
+    this.assertAlertMessage = function (alert) {
+        var message = element(by.className('popover-content ng-binding')).getText();
+        expect(message).toBe(alert);
+        return require("./table_page.js");
+    };
+
+    this.createEmptyTable = function (text) {
+        browser.isElementPresent(by.model('table.title'));
+        element(by.className('btn btn-success btn-loading')).click();
+        var message = element(by.css('[ng-message="required"]')).getText();
+        expect(message).toBe(text);
     };
 
     this.assertNewTable = function (name) {
