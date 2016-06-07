@@ -22,4 +22,19 @@ describe('Gandalf', function () {
         home_page.fillSignInForm('trololo', 'ololol');
         home_page.assertAlertMessage();
     });
+
+    it('SingIn test bad password', function () {
+        home_page.fillSignInForm('furman', 'ololol');
+        home_page.assertAlertMessage();
+    });
+
+    it('SingIn test bad login', function () {
+        home_page.fillSignInForm('sdfsdfsd', 'gt40vt14d');
+        home_page.assertAlertMessage();
+    });
+
+    it('SingIn test bad login', function () {
+        home_page.fillSignInForm('!@^%&*!$#%^(!()&_$#@)', '!@^%&*!$#%^(!()&_$#@)');
+        home_page.assertAlertMessage();
+    });
 });
