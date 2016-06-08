@@ -67,6 +67,21 @@ var new_tables_page = function () {
         return require("./table_page.js");
     };
 
+    this.cloneRows = function (message) {
+        element(by.css('[ng-click="copyRule(rule)"]')).click();
+        var changeMessage = element(by.xpath('/html/body/div/ui-view/ui-view/div/ui-view/ui-view/ui-view/form/div[2]/div/p')).getText();
+        expect(changeMessage).toBe(message);
+        element(by.className('btn btn-success btn-loading')).click();
+    };
+
+    this.assertRowIsCloned = function (row1, row2) {
+        var firstRow = element(by.xpath('/html/body/div/ui-view/ui-view/div/ui-view/ui-view/ui-view/form/div[2]/decision-table/div[1]/div[1]/table[1]/tbody/tr[1]/td[2]/div/b')).getText();
+        expect(firstRow).toBe(row1);
+        var secondRow = element(by.xpath('/html/body/div/ui-view/ui-view/div/ui-view/ui-view/ui-view/form/div[2]/decision-table/div[1]/div[1]/table[1]/tbody/tr[2]/td[2]/div/b')).getText();
+        expect(secondRow).toBe(row2);
+        expect(firstRow).toBe(secondRow);
+    };
+
     this.createEmptyTable = function (text) {
         browser.isElementPresent(by.model('table.title'));
         element(by.className('btn btn-success btn-loading')).click();
