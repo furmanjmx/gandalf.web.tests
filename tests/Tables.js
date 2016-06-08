@@ -113,4 +113,15 @@ describe('Gandalf', function () {
         new_tables_page.createNewTableWithoutColumn('testtest', 'testdecs', 'randData', 'description', 'testdecs', 'random', 'randomData');
         new_tables_page.assertAlertMessage('Should have at least 1 column');
     });
+
+    it('Create Scoring Table test', function () {
+        home_page.fillSignUpForm(faker.name.findName(), faker.name.findName(), faker.internet.email());
+        var welcome_page = home_page.welcomePage();
+        var new_project_page = welcome_page.clickContinue();
+        new_project_page.createNewProject();
+        var table_page = new_project_page.createProject('testProject', 'testDescription');
+        var new_tables_page = table_page.addTable();
+        new_tables_page.createNewScoringTable('testtest', 'testdecs', '1', 'description', 'werwer', 'random', 'randomData', 'werwer', 'random');
+        new_tables_page.assertNewTable('testdecs');
+    });
 });

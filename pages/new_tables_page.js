@@ -25,6 +25,28 @@ var new_tables_page = function () {
         return require("./table_page.js");
     };
 
+    this.createNewScoringTable = function (tableName, tableDesc, testData, testData2, testData3, rowData, rowData2, fieldTitle, fieldKey) {
+        browser.isElementPresent(by.model('table.title'));
+        element(by.model('table.title')).sendKeys(tableName);
+        element(by.model('table.description')).sendKeys(tableDesc);
+        element(by.model('matchingType')).click();
+        element(by.xpath('/html/body/div[1]/div/div/div[3]/button[2]')).click();
+        element(by.model('$parent.model')).clear();
+        element(by.model('$parent.model')).sendKeys(testData);
+        element(by.model('table.defaultTitle')).sendKeys(testData2);
+        element(by.model('table.defaultDescription')).sendKeys(testData3);
+        element(by.className('plus')).click();
+        element(by.model('rule.title')).sendKeys(rowData);
+        element(by.model('table.defaultDescription')).sendKeys(rowData2);
+        element(by.className('table-decision-column-add ng-isolate-scope')).click();
+        browser.isElementPresent(by.model('field.title'));
+        element(by.model('field.title')).sendKeys(fieldTitle);
+        element(by.model('field.key')).sendKeys(fieldKey);
+        element(by.className('btn btn-primary')).click();
+        element(by.className('btn btn-success btn-loading')).click();
+        return require("./table_page.js");
+    };
+
     this.createNewTableWithoutColumn = function (data1, data2, data3, data4, data5, data6, data7) {
         browser.isElementPresent(by.model('table.title'));
         element(by.model('table.title')).sendKeys(data1);
