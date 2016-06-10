@@ -23,6 +23,17 @@ describe('Gandalf', function () {
         settings_page.addConsumer('newConsumer');
     });
 
+    it('Rename Consumer test', function () {
+        home_page.fillSignUpForm(faker.name.findName(), faker.name.findName(), faker.internet.email());
+        var welcome_page = home_page.welcomePage();
+        var new_project_page = welcome_page.clickContinue();
+        new_project_page.createNewProject();
+        new_project_page.createProject('testProject', 'testDescription');
+        var settings_page = new_project_page.getSettings();
+        settings_page.addConsumer('newConsumer');
+        settings_page.renameConsumer('renameConsumer');
+    });
+
     it('DeleteProject test', function () {
         home_page.fillSignUpForm(faker.name.findName(), faker.name.findName(), faker.internet.email());
         var welcome_page = home_page.welcomePage();

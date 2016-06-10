@@ -13,6 +13,15 @@ var settings_page = function () {
         expect(consumer).toBe(description);
     };
 
+    this.renameConsumer = function (newConsumerName) {
+        element(by.xpath('/html/body/div/ui-view/ui-view/div/ui-view/ui-view/div[2]/div[2]/div[2]/div/div[2]/div/a[1]')).click();
+        element(by.model('model.description')).clear();
+        element(by.model('model.description')).sendKeys(newConsumerName);
+        element(by.className('btn btn-primary')).click();
+        var consumer = element(by.xpath('/html/body/div/ui-view/ui-view/div/ui-view/ui-view/div[2]/div[2]/div[2]/div/div[2]/div/a[1]')).getText();
+        expect(consumer).toBe(newConsumerName);
+    };
+
     this.deleteProject = function (text) {
         browser.isElementPresent(by.buttonText('Delete project'));
         element(by.buttonText('Delete project')).click();
