@@ -136,4 +136,18 @@ describe('Gandalf', function () {
         new_tables_page.cloneRows('This table have unsaved data. You need to save changes manually.');
         new_tables_page.assertRowIsCloned('random', 'random');
     });
+
+    it('Decisions history test', function () {
+        home_page.fillSignUpForm(faker.name.findName(), faker.name.findName(), faker.internet.email());
+        var welcome_page = home_page.welcomePage();
+        var new_project_page = welcome_page.clickContinue();
+        new_project_page.createNewProject();
+        var table_page = new_project_page.createProject('testProject', 'testDescription');
+        var new_tables_page = table_page.addTable();
+        new_tables_page.createNewTable('testName', 'testDescription', 'randData', 'description', 'testDescription', 'random', 'randomData', 'olol', 'dfdfs');
+        var debugger_page = new_tables_page.getDebugger();
+        debugger_page.debugTable('"testName"', '"first"');
+        var decision_page = debugger_page.setValue('1');
+        decision_page.assertRequest('"1"', 'is set');
+    });
 });
