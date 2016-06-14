@@ -44,4 +44,9 @@ describe('Gandalf', function () {
         home_page.fillSignUpForm(faker.name.findName(), faker.name.findName(), '!^@%$#&!@(^#*%(@&*!');
         home_page.assertAlertMessage();
     });
+
+    it('SingUp short pass test', function () {
+        home_page.fillSignUpForm(faker.name.findName(), 'sd', faker.internet.email());
+        home_page.assertAlertMessage();
+    });
 });
