@@ -53,6 +53,3 @@ var settings_page = function () {
 };
 
 module.exports = new settings_page();
-
-
-
